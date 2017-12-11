@@ -6,7 +6,7 @@
   <artifactId>Road-To-SpringMVC</artifactId>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>springquarzt</module>
+    <module>spring-quarzt</module>
   </modules>
   <packaging>pom</packaging>
 

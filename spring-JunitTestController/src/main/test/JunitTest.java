@@ -1,5 +1,6 @@
-package junit_test.test;
-
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,14 +14,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
-  
+
 /** 
  * @author zhzh 
  * 2015-4-7 
  */  
 @RunWith(SpringJUnit4ClassRunner.class)    
 @WebAppConfiguration    
-@ContextConfiguration({"classpath*:/beans.xml","classpath*:/junt-test-applicationContext.xml"})   
+@ContextConfiguration({"classpath*:/junt-test-applicationContext.xml"})
 //当然 你可以声明一个事务管理 每个单元测试都进行事务回滚 无论成功与否    
 //@TransactionConfiguration(defaultRollback = true)    
 //@Transactional   
@@ -30,7 +31,7 @@ public class JunitTest {
     
     private MockMvc mockMvc;   
       
-    @Before    
+    @Before
     public void setup() {     
         this.mockMvc = webAppContextSetup(this.wac).build();  
     }   

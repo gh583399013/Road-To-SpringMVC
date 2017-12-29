@@ -1,13 +1,16 @@
 package junit_test.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,5 +47,52 @@ public class TestController {
 	public void login(HttpServletRequest requst,HttpServletResponse response,Student student){
 		System.out.println("id = " + student.getId());
 		System.out.println("name = " + student.getName());
+	}
+
+	/**
+	 * 测试get 请求post
+	 * @param requst
+	 * @param response
+	 * @param student
+	 * @return
+	 */
+	@RequestMapping(value = "/getPostFunc",method = {RequestMethod.POST})
+	@ResponseBody
+	public String getPostFunc(HttpServletRequest requst,HttpServletResponse response,Student student){
+		return "你想用get请求post方法嘛 骚年";
+	}
+
+
+//	@RequestMapping(value = "/getJsonParam",method = {RequestMethod.POST})
+//	@ResponseBody
+//	public String getGetJsonParam(@RequestBody Student[] studentList){
+//		if(studentList == null || studentList.length == 0){
+//			return "吔屎啦你 传个空";
+//		}else{
+//			return JSON.toJSONString(studentList);
+//		}
+//	}
+
+	/**
+	 * 接受json数组参数 必须要用@RequestBody
+	 * remark*-2
+	 * springmvc controller在接受json数组的时候 不管是数组或者list接受 如String[] strArr 或 List<String> strList
+	 * 一定要用@RequestBody
+	 *
+	 * @param studentList
+	 * @return
+	 */
+	@RequestMapping(value = "/getJsonParam",method = {RequestMethod.POST})
+	@ResponseBody
+	public String getGetJsonParam(@RequestBody List<Student> studentList){
+		if(studentList.isEmpty()){
+			return "吔屎啦你 传个空";
+		}else{
+			Student student = new Student();
+			student.setName("系统管理员");
+			student.setId("-1");
+			studentList.add(student);
+			return JSON.toJSONString(studentList);
+		}
 	}
 }

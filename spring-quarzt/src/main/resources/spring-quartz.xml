@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Run the job every 2 seconds with initial delay of 1 second -->
+    <bean id="simpleTrigger"  class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="typeATaskJobDetail" />
+        <property name="startDelay" value="1000" />
+        <property name="repeatInterval" value="2000" />
+    </bean>
+
+    <!-- Run the job every 5 seconds -->
+    <bean id="cronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="typeBTaskJobDetail" />
+        <!--<property name="cronExpression" value="0/5 * * ? * SAT-SUN" />-->
+        <property name="cronExpression" value="0/5 * * ? * *" />
+
+    </bean>
+
+    <bean id="typeATask" class="com.ft.test002.TypeATask"></bean>
+
+    <!-- For times when you just need to invoke a method on a specific object -->
+    <bean id="typeATaskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="typeATask" />
+        <property name="targetMethod" value="execute" />
+    </bean>
+
+    <bean id="typeBTaskParam" class="com.ft.test002.TypeBTaskParam"></bean>
+    <!-- For times when you need more complex processing, passing data to the scheduled job -->
+    <bean name="typeBTaskJobDetail"    class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.ft.test002.TypeBTask" />
+        <property name="jobDataMap">
+            <map>
+                <entry key="typeBTaskParam" value-ref="typeBTaskParam" />
+            </map>
+        </property>
+        <property name="durability" value="true" />
+    </bean>
+
+    <!-- Scheduler factory bean to glue together jobDetails and triggers to Configure Quartz Scheduler -->
+    <bean  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <!--<ref bean="typeATaskJobDetail" />-->
+                <ref bean="typeBTaskJobDetail" />
+                <!--<ref bean="secondComplexJobDetail" />-->
+            </list>
+        </property>
+
+        <property name="triggers">
+            <list>
+                <!--<ref bean="simpleTrigger" />-->
+                <ref bean="cronTrigger" />
+                <!--<ref bean="secondCronTrigger" />-->
+            </list>
+        </property>
+    </bean>
+</beans>

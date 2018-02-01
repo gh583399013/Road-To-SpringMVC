@@ -22,6 +22,7 @@
     <java.source.version>1.7</java.source.version>
     <java.target.version>1.7</java.target.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <quartz.version>2.2.3</quartz.version>
   </properties>
 
   <dependencyManagement>
@@ -35,11 +36,30 @@
         <scope>import</scope>
       </dependency>
 
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+
       <!-- fastjson -->
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>fastjson</artifactId>
         <version>${fastjson.version}</version>
+      </dependency>
+
+      <!-- quartz定时任务 -->
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz</artifactId>
+        <version>${quartz.version}</version>
       </dependency>
 
       <dependency>

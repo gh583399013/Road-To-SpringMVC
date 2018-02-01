@@ -14,7 +14,7 @@
     <bean id="cronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="typeBTaskJobDetail" />
         <!--<property name="cronExpression" value="0/5 * * ? * SAT-SUN" />-->
-        <property name="cronExpression" value="0/5 * * ? * *" />
+        <property name="cronExpression" value="${typeBTask.cronExpression}" />
 
     </bean>
 

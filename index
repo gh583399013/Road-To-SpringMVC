@@ -21,3 +21,9 @@ B：使用 JobDetailFactoryBean
 remark*-1
     传递参数的时候,定义个和key同名的参数接受并且要实现setter方法,
     或者直接去jobDataMap中去拿 然后强转
+
+CronExpression表达式语法总结
+http://blog.csdn.net/tang9140/article/details/45332137
+http://blog.csdn.net/u010202237/article/details/50991036
+
+

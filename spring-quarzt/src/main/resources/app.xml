@@ -14,4 +14,5 @@
     </bean>
 
     <import resource="spring-quartz.xml"></import>
+    <import resource="spring-quartz1.xml"></import>
 </beans>

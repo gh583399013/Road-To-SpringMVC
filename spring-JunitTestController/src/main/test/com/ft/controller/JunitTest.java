@@ -1,4 +1,4 @@
-package controller;
+package com.ft.controller;
 
 import base.BaseTest;
 import org.junit.Test;
@@ -33,6 +33,24 @@ public class JunitTest extends BaseTest {
     public void testTest005() throws Exception {
         String paramJson = "[{\"name\":\"fengtao\",\"id\":\"1\"},{\"name\":\"chensi\",\"id\":\"2\"}]";
         String reponse =mockMvc.perform((post("/test/test005").contentType(MediaType.APPLICATION_JSON_UTF8).content(paramJson)))
+                .andExpect(status().isOk())
+                .andDo(print()).andReturn().getResponse().getContentAsString();
+        System.out.println(reponse);
+    }
+
+    @Test
+    public void testTest006() throws Exception {
+        String paramJson = "{\"name\":\"fengtao\",\"id\":\"1\"}";
+        String reponse =mockMvc.perform((post("/test/test006").contentType(MediaType.APPLICATION_JSON_UTF8).content(paramJson)))
+                .andExpect(status().isOk())
+                .andDo(print()).andReturn().getResponse().getContentAsString();
+        System.out.println(reponse);
+    }
+
+    @Test
+    public void testTest007() throws Exception {
+        String paramJson = "{\"name\":\"fengtao\",\"id\":\"1\"}";
+        String reponse =mockMvc.perform((post("/test/test007").contentType(MediaType.APPLICATION_JSON_UTF8).content(paramJson)))
                 .andExpect(status().isOk())
                 .andDo(print()).andReturn().getResponse().getContentAsString();
         System.out.println(reponse);

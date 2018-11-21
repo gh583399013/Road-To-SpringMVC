@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+    
+ <configuration>
+ 	<settings>
+ 		<setting name="logImpl" value="STDOUT_LOGGING"/>
+ 	</settings>
+<!--  	<properties resource="jdbc.properties"></properties>
+     <environments default="development">
+         <environment id="development">
+             <transactionManager type="JDBC" />
+             <dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+				在任意时间存在的活动（也就是正在使用）连接的数量
+				<property name="poolMaximumActiveConnections" value="10"/>
+				任意时间存在的空闲连接数
+				<property name="poolMaximumIdleConnections" value="5"/>
+				默认值是false，当值为true的时候，将开启ping机制
+				<property name="poolPingEnabled" value="true"/>
+				对数据库进行ping时所使用的sql
+				<property name="poolPingQuery" value="${validationQuery}"/>
+				只针对闲置时间超过某个时间的连接，进行ping  默认值是0，单位是毫秒
+				<property name="poolPingConnectionsNotUsedFor" value="3600000"/>
+             </dataSource>
+         </environment>
+     </environments>
+     
+     <mappers>
+     	 <mapper resource="com/dj/tricycle/item/mapping/ItemMapper.xml" />
+     	 <mapper resource="com/dj/tricycle/item/mapping/ItemBatchMapper.xml" />
+     	 <mapper resource="com/dj/tricycle/item/mapping/ItemLogMapper.xml" />
+     	 <mapper resource="com/dj/tricycle/item/mapping/ItemCommentMapper.xml"/>
+     	 <mapper resource="com/dj/tricycle/bidding/mapping/BidMapper.xml"/>
+     	 <mapper resource="com/dj/tricycle/bidding/mapping/BidAuditMapper.xml" />
+     	 <mapper resource="com/dj/tricycle/enquiry/mapping/EnqAuditMapper.xml"/>
+     	 <mapper resource="com/dj/tricycle/enquiry/mapping/EnquiryMapper.xml"/>
+     	 <mapper resource="com/dj/tricycle/enquiry/mapping/EnqProductMapper.xml"/>
+         <mapper resource="com/dj/tricycle/unit/mapping/UnitMapper.xml" />
+         <mapper resource="com/dj/tricycle/item/mapping/CategoryMapper.xml" />
+         <mapper resource="com/dj/tricycle/enterpriseSite/mapping/NavigateMapper.xml" />
+         <mapper resource="com/dj/tricycle/enterpriseSite/mapping/EnpSiteBidMapper.xml" />
+         <mapper resource="com/dj/tricycle/enterpriseSite/mapping/EnpSiteEnquiryMapper.xml" />
+         <mapper resource="com/dj/tricycle/enterpriseSite/mapping/EnpSiteItemsMapper.xml" />
+     </mappers> -->
+     
+</configuration>

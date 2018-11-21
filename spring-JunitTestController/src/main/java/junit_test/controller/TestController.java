@@ -136,6 +136,18 @@ public class TestController {
 		}
 	}
 
+	@RequestMapping(value = "/test006",method = {RequestMethod.POST})
+	@ResponseBody
+	public String test006(Student studentList){
+			return JSON.toJSONString(studentList);
+	}
+
+	@RequestMapping(value = "/test007",method = {RequestMethod.POST})
+	@ResponseBody
+	public String test006(@RequestParam("id") String id,@RequestParam("name") String name){
+		return JSON.toJSONString(id + name);
+	}
+
 	/**
 	 * 测试get 请求post
 	 * @param request

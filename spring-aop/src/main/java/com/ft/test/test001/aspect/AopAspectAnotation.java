@@ -3,10 +3,12 @@ package com.ft.test.test001.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(1)
 public class AopAspectAnotation {
 
     //(* com.ft.test.*.api..*(..))
@@ -22,7 +24,7 @@ public class AopAspectAnotation {
      */
     @Before(value = pointCut)
     public void doBefore(JoinPoint jp){
-        System.out.println("---->执行前置通知");
+        System.out.println("(先)---->执行前置通知");
     }
 
     /**
@@ -33,7 +35,7 @@ public class AopAspectAnotation {
      */
     @AfterReturning(value = pointCut, returning = "result")
     public void doAfterReturning(JoinPoint jp,String result){
-        System.out.println("---->执行后置通知");
+        System.out.println("(先)---->执行后置通知");
         System.out.println("返回值result:"+result);
     }
 
@@ -44,7 +46,7 @@ public class AopAspectAnotation {
      */
     @After(value = pointCut)
     public void doAfter(JoinPoint jp){
-        System.out.println("---->执行最终通知");
+        System.out.println("(先)---->执行最终通知");
     }
 
     /**
@@ -56,7 +58,7 @@ public class AopAspectAnotation {
      */
     @AfterThrowing(value = pointCut, throwing = "ex")
     public void doAfterThrowing(JoinPoint jp,Exception ex){
-        System.out.println("---->执行异常通知");
+        System.out.println("(先)---->执行异常通知");
     }
 
     /**
@@ -72,7 +74,7 @@ public class AopAspectAnotation {
      */
     @Around(value = pointCut)
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable{
-        System.out.println("---->执行环绕通知开始");
+        System.out.println("(先)---->执行环绕通知开始");
          // 调用方法的参数
         Object[] args = pjp.getArgs();
         // 调用的方法名
@@ -87,7 +89,7 @@ public class AopAspectAnotation {
         Object result=pjp.proceed();
 
         System.out.println("输出,方法名：" + method + ";目标对象：" + target + ";返回值：" + result);
-        System.out.println("---->执行环绕通知结束");
+        System.out.println("(先)---->执行环绕通知结束");
         return result;
     }
 }
